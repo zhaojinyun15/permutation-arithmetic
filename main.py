@@ -26,7 +26,7 @@ if __name__ == '__main__':
     random_list = create_random_list(10000)
     # print(random_list)
     start_time = time.time()
-    permutation.bubble(random_list)
+    permutation.insertion(random_list)
     end_time = time.time()
     print(f'takes time: {(end_time - start_time) * 1000} ms')
     # print(random_list)

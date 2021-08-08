@@ -1,16 +1,28 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import random
+import time
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def create_random_list(list_len):
+    """
+    生成随机数list
+    :param list_len:
+    :return:
+    """
+    if list_len < 0:
+        raise Exception('params error!')
+    if list_len > 1000000:
+        raise Exception('too long list!')
+    max_num = list_len * 10
+    random_list = []
+    for i in range(list_len):
+        random_list.append(random.randint(1, max_num))
+        # yield random.randint(1, max_num)
+    return random_list
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    start_time = time.time()
+    random_list = create_random_list(100)
+    print(random_list)
+    end_time = time.time()
+    print(f'takes time: {end_time - start_time} seconds')

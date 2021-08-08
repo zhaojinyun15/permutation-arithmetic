@@ -1,6 +1,8 @@
 import random
 import time
 
+import permutation
+
 
 def create_random_list(list_len):
     """
@@ -21,8 +23,10 @@ def create_random_list(list_len):
 
 
 if __name__ == '__main__':
+    random_list = create_random_list(10000)
+    # print(random_list)
     start_time = time.time()
-    random_list = create_random_list(100)
-    print(random_list)
+    permutation.bubble(random_list)
     end_time = time.time()
-    print(f'takes time: {end_time - start_time} seconds')
+    print(f'takes time: {(end_time - start_time) * 1000} ms')
+    # print(random_list)

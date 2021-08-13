@@ -78,20 +78,19 @@ def merge(origin_list, begin_index, end_index):
 
 def shell(origin_list):
     """
-    NlogN
+    N^(3/2)
     :param origin_list:
     :return:
     """
     list_length = len(origin_list)
     gap = list_length // 2
     while gap >= 1:
-        i = gap
-        while i < list_length:
+        for i in range(gap, list_length):
             j = i
             temp = origin_list[j]
             while j > 0 and origin_list[j - gap] > temp:
                 origin_list[j] = origin_list[j - gap]
                 j -= gap
             origin_list[j] = temp
-            i += 1
         gap //= 2
+    return origin_list

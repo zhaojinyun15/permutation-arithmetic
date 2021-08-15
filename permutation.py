@@ -94,3 +94,45 @@ def shell(origin_list):
             origin_list[j] = temp
         gap //= 2
     return origin_list
+
+
+def prec_down(origin_list, i, last_index):
+    """
+    for heap sort, percolate down the element of index i
+    :param origin_list:
+    :param i:
+    :param last_index:
+    :return:
+    """
+    child_index = i * 2 + 1
+    while child_index <= last_index:
+        if child_index != last_index and origin_list[child_index] < origin_list[child_index + 1]:
+            child_index += 1
+        if origin_list[i] < origin_list[child_index]:
+            swap(origin_list, i, child_index)
+        else:
+            break
+        i = child_index
+        child_index = i * 2 + 1
+
+
+def heap(origin_list):
+    """
+    NlogN
+    :param origin_list:
+    :return:
+    """
+    if len(origin_list) < 2:
+        return origin_list
+    # build heap
+    i = len(origin_list) // 2 - 1
+    while i >= 0:
+        prec_down(origin_list, i, len(origin_list) - 1)
+        i -= 1
+    # delete max
+    i = len(origin_list) - 1
+    while i > 0:
+        swap(origin_list, 0, i)
+        prec_down(origin_list, 0, i - 1)
+        i -= 1
+    return origin_list

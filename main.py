@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     # permutation.bubble(random_list)
     # permutation.insertion(random_list)
-    # permutation.merge(random_list, 0, len(random_list))
+    # permutation.merge(random_list, 0, len(random_list) - 1)
     # permutation.shell(random_list)
     permutation.heap(random_list)
 

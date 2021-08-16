@@ -48,7 +48,8 @@ if __name__ == '__main__':
     # permutation.insertion(random_list)
     # permutation.merge(random_list, 0, len(random_list) - 1)
     # permutation.shell(random_list)
-    permutation.heap(random_list)
+    # permutation.heap(random_list)
+    permutation.quick(random_list, 0, len(random_list) - 1)
 
     end_time = time.time()
     print(f'takes time: {(end_time - start_time) * 1000} ms')

@@ -136,3 +136,55 @@ def heap(origin_list):
         prec_down(origin_list, 0, i - 1)
         i -= 1
     return origin_list
+
+
+def medium3(origin_list, left_index, right_index):
+    """
+    choose a pivot of quick sort
+    :param origin_list:
+    :param left_index:
+    :param right_index:
+    :return:
+    """
+    center_index = (left_index + right_index) // 2
+    if origin_list[left_index] > origin_list[center_index]:
+        swap(origin_list, left_index, center_index)
+    if origin_list[left_index] > origin_list[right_index]:
+        swap(origin_list, left_index, right_index)
+    if origin_list[center_index] > origin_list[right_index]:
+        swap(origin_list, center_index, right_index)
+    swap(origin_list, center_index, right_index - 1)
+    return origin_list[right_index - 1]
+
+
+def quick(origin_list, left_index, right_index):
+    """
+    NlogN
+    :param origin_list:
+    :param left_index:
+    :param right_index:
+    :return:
+    """
+    if right_index - left_index < 1:
+        return origin_list
+    if right_index - left_index <= 2:
+        medium3(origin_list, left_index, right_index)
+        return origin_list
+    pivot = medium3(origin_list, left_index, right_index)
+    i = left_index + 1
+    j = right_index - 2
+    while True:
+        while origin_list[i] < pivot:
+            i += 1
+        while origin_list[j] > pivot:
+            j -= 1
+        if i < j:
+            swap(origin_list, i, j)
+            i += 1
+            j -= 1
+        else:
+            break
+    swap(origin_list, i, right_index - 1)
+    quick(origin_list, left_index, i - 1)
+    quick(origin_list, i + 1, right_index)
+    return origin_list
